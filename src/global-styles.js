@@ -1,5 +1,7 @@
 import { StyleSheet } from './helpers/global-aphrodite';
+
 import { green } from './constants/colors';
+import { desktopMq } from './constants/breakpoints';
 
 export default StyleSheet.create({
   globals: {
@@ -27,6 +29,27 @@ export default StyleSheet.create({
       ':hover:after': {
         transform: 'translateY(0)',
         opacity: 1,
+      },
+    },
+
+    '*h1': {
+      fontSize: '26px',
+      marginBottom: '45px',
+      letterSpacing: '-0.5px',
+
+      [desktopMq]: {
+        letterSpacing: '-1px',
+        fontSize: '36px',
+      },
+    },
+
+    '*p': {
+      fontSize: '15px',
+      lineHeight: 1.5,
+      marginBottom: '25px',
+
+      [desktopMq]: {
+        fontSize: '17px',
       },
     },
   },

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'aphrodite';
+
 import { gray } from '../../constants/colors';
+import { desktopMq } from '../../constants/breakpoints';
 
 const height = '24px';
 
@@ -7,7 +9,11 @@ export default StyleSheet.create({
   hr: {
     position: 'relative',
     height,
-    margin: '50px 10%',
+    margin: '30px 15%',
+
+    [desktopMq]: {
+      margin: '50px 15%',
+    }
   },
 
   line: {
@@ -42,6 +48,6 @@ export default StyleSheet.create({
   icon: {
     fill: gray,
     transformOrigin: 'center center',
-    transform: 'rotate(90deg)'
+    transform: 'rotate(90deg)',
   },
 });

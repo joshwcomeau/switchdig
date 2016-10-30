@@ -1,17 +1,15 @@
 import { StyleSheet } from 'aphrodite';
 
+import { desktopMq } from '../../constants/breakpoints';
+
 export default StyleSheet.create({
   authors: {
-    paddingTop: '50px',
-    paddingBottom: '50px',
-  },
-  heading: {
-    fontSize: '38px',
-    marginBottom: '45px',
-  },
-  paragraph: {
-    fontSize: '19px',
-    lineHeight: 1.5,
-    marginBottom: '25px',
+    paddingTop: '30px',
+    paddingBottom: '30px',
+
+    [desktopMq]: {
+      paddingTop: '50px',
+      paddingBottom: '50px',
+    }
   },
 });

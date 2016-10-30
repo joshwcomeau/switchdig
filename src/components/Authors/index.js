@@ -21,10 +21,10 @@ const Authors = () => (
       <a href="/">authors</a>.
     </p>
     <p className={css(styles.paragraph)}>
-      Every month or two, I spend half an hour checking each author’s website to see if their newest books have been published. This is terribly ineffective; every site is different, some authors don’t have sites, others don’t update them.
+      On occasion, I’ll check to see if any of these authors have a new book out. This is a time-consuming and error-prone process, and I’ve no doubt missed dozens of great books over the years.
     </p>
     <p className={css(styles.paragraph)}>
-      Switchdig is a service to ensure you never miss new releases from your favorite authors. It’s something I built for myself to avoid literary droughts, and it’s proven so useful that I decided to put it online.
+      Switchdig is a service to ensure you never miss new releases from your favorite authors. It’s something I built for myself, and it’s proven so useful that I decided to put it online.
     </p>
 
     <Hr />
