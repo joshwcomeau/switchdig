@@ -10,7 +10,6 @@ import Header from './components/Header';
 import Authors from './components/Authors';
 import NotFound from './components/NotFound';
 
-
 const store = configureStore();
 
 render(
