@@ -3,11 +3,11 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import { css } from 'aphrodite';
 
-import { widthLargePx } from '../../constants/sizes';
+import { widthMediumPx } from '../../constants/sizes';
 import styles from './styles';
 
 
-const MaxWidthWrapper = ({ children, maxWidth = widthLargePx, className }) => (
+const MaxWidthWrapper = ({ children, maxWidth = widthMediumPx, className }) => (
   <div
     className={classNames(css(styles.maxWidthWrapper), className)}
     style={{ maxWidth }}

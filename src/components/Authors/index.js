@@ -7,28 +7,45 @@ import { widthMediumPx } from '../../constants/sizes';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Hr from '../Hr';
+import RowWithBullet from '../RowWithBullet';
 import styles from './styles';
 
 
 const Authors = () => (
-  <MaxWidthWrapper className={css(styles.authors)} maxWidth={widthMediumPx}>
-    <h1 className={css(styles.heading)}>Never miss a great book again...</h1>
-    <p className={css(styles.paragraph)}>
-      I’m a voracious reader, and I have a&nbsp;
-      <a href="/">lot</a>&nbsp;
-      <a href="/">of</a>&nbsp;
-      <a href="/">favorite</a>&nbsp;
-      <a href="/">authors</a>.
-    </p>
-    <p className={css(styles.paragraph)}>
-      On occasion, I’ll check to see if any of these authors have a new book out. This is a time-consuming and error-prone process, and I’ve no doubt missed dozens of great books over the years.
-    </p>
-    <p className={css(styles.paragraph)}>
-      Switchdig is a service to ensure you never miss new releases from your favorite authors. It’s something I built for myself, and it’s proven so useful that I decided to put it online.
-    </p>
+  <div className={css(styles.authors)} >
+    <MaxWidthWrapper>
+      <h1 className={css(styles.heading)}>Never miss a great book again...</h1>
+      <p className={css(styles.paragraph)}>
+        I’m a voracious reader, and I have a&nbsp;
+        <a href="/">lot</a>&nbsp;
+        <a href="/">of</a>&nbsp;
+        <a href="/">favorite</a>&nbsp;
+        <a href="/">authors</a>.
+      </p>
+      <p className={css(styles.paragraph)}>
+        On occasion, I’ll check to see if any of these authors have a new book out. This is a time-consuming and error-prone process, and I’ve no doubt missed dozens of great books over the years.
+      </p>
+      <p className={css(styles.paragraph)}>
+        Switchdig is a service to ensure you never miss new releases from your favorite authors. It’s something I built for myself, and it’s proven so useful that I decided to put it online.
+      </p>
 
-    <Hr />
-  </MaxWidthWrapper>
+      <Hr />
+    </MaxWidthWrapper>
+
+    <MaxWidthWrapper>
+      <form>
+        <RowWithBullet bulletNum={1}>
+          Enter an author name
+        </RowWithBullet>
+        <RowWithBullet bulletNum={2}>
+          More Options
+        </RowWithBullet>
+        <RowWithBullet bulletNum={3}>
+          Final Options
+        </RowWithBullet>
+      </form>
+    </MaxWidthWrapper>
+  </div>
 );
 
 Authors.propTypes = {

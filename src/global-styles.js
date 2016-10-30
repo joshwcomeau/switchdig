@@ -46,7 +46,7 @@ export default StyleSheet.create({
     '*p': {
       fontSize: '15px',
       lineHeight: 1.5,
-      marginBottom: '25px',
+      marginBottom: '18px',
 
       [desktopMq]: {
         fontSize: '17px',
