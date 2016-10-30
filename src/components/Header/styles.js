@@ -40,6 +40,6 @@ export default StyleSheet.create({
 
   name: {
     verticalAlign: 'middle',
-    marginLeft: '3px',
+    marginLeft: '5px',
   },
 });

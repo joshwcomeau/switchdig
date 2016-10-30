@@ -4,7 +4,9 @@ import React, { Component, PropTypes } from 'react';
 import { css } from 'aphrodite';
 
 import { widthMediumPx } from '../../constants/sizes';
+
 import MaxWidthWrapper from '../MaxWidthWrapper';
+import Hr from '../Hr';
 import styles from './styles';
 
 
@@ -24,6 +26,8 @@ const Authors = () => (
     <p className={css(styles.paragraph)}>
       Switchdig is a service to ensure you never miss new releases from your favorite authors. It’s something I built for myself to avoid literary droughts, and it’s proven so useful that I decided to put it online.
     </p>
+
+    <Hr />
   </MaxWidthWrapper>
 );
 

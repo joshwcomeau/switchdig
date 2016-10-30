@@ -19,7 +19,7 @@ const Header = ({ mediaType }) => {
       />
 
       <h1 className={css(styles.logo)}>
-        <Icon className={css(styles.icon)} value="add-alert" size={22} />
+        <Icon className={css(styles.icon)} value="notifications-active" size={22} />
         <span className={css(styles.name)}>Switchdig</span>
       </h1>
     </header>
