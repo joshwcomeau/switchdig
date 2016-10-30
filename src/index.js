@@ -9,7 +9,6 @@ import App from './components/App';
 import Header from './components/Header';
 import Authors from './components/Authors';
 import NotFound from './components/NotFound';
-import DevTools from './components/DevTools';
 
 
 const store = configureStore();
@@ -17,14 +16,18 @@ const store = configureStore();
 render(
   <Provider store={store}>
     <Router>
-      <App>
-        <Header />
+      <Match
+        pattern="/:mediaType"
+        render={({ params }) => (
+          <App>
+            <Header mediaType={params.mediaType} />
 
-        <Match pattern="/authors" component={Authors} />
-        <Miss component={NotFound} />
+            <Match pattern="/authors" component={Authors} />
 
-        <DevTools />
-      </App>
+            <Miss component={NotFound} />
+          </App>
+        )}
+      />
     </Router>
   </Provider>,
   document.getElementById('root')
