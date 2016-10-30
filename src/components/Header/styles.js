@@ -1,4 +1,5 @@
 import { StyleSheet } from 'aphrodite';
+import * as colors from '../../constants/colors';
 import { headerHeightPx } from '../../constants/sizes';
 
 export default StyleSheet.create({
@@ -18,15 +19,18 @@ export default StyleSheet.create({
     height: '5px',
   },
 
-  navDecoration: {
-    position: 'absolute',
-    left: `-${headerHeightPx}`,
-    width: 0,
-    height: 0,
-    borderStyle: 'solid',
-    borderWidth: `0 ${headerHeightPx} ${headerHeightPx} 0`,
-    borderTopColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderBottomColor: 'transparent',
+  logo: {
+    paddingLeft: '40px',
+    fontSize: '20px',
+  },
+
+  icon: {
+    transform: 'translateY(4px)', // vertical alignment D:
+    fill: colors.gray,
+  },
+
+  name: {
+    verticalAlign: 'middle',
+    marginLeft: '3px',
   },
 });

@@ -3,20 +3,13 @@ import React, { Component, PropTypes } from 'react';
 import { css } from 'aphrodite';
 
 import { getPrimaryColorForMediaType } from '../../helpers/style';
-import styles from './styles';
 
-import PrimaryNav from '../PrimaryNav';
+import Icon from '../Icon';
+import styles from './styles';
 
 
 const Header = ({ mediaType }) => {
   const primaryColor = getPrimaryColorForMediaType(mediaType);
-
-  const navDecoration = (
-    <div
-      className={css(styles.navDecoration)}
-      style={{ borderColor: primaryColor }}
-    />
-  );
 
   return (
     <header className={css(styles.header)}>
@@ -25,12 +18,10 @@ const Header = ({ mediaType }) => {
         style={{ backgroundColor: primaryColor }}
       />
 
-      <h1>Switchdig</h1>
-
-      <PrimaryNav
-        decoration={navDecoration}
-        backgroundColor={primaryColor}
-      />
+      <h1 className={css(styles.logo)}>
+        <Icon className={css(styles.icon)} value="add-alert" size={22} />
+        <span className={css(styles.name)}>Switchdig</span>
+      </h1>
     </header>
   );
 };
