@@ -1,6 +1,11 @@
 import { StyleSheet } from 'aphrodite';
 import * as colors from '../../constants/colors';
-import { headerHeightPx } from '../../constants/sizes';
+import { desktopMq } from '../../constants/breakpoints';
+import {
+  headerHeightPx,
+  screenPaddingDesktop,
+  screenPaddingMobile,
+} from '../../constants/sizes';
 
 export default StyleSheet.create({
   header: {
@@ -20,8 +25,12 @@ export default StyleSheet.create({
   },
 
   logo: {
-    paddingLeft: '40px',
+    paddingLeft: `${screenPaddingMobile - 3}px`,
     fontSize: '20px',
+
+    [desktopMq]: {
+      paddingLeft: `${screenPaddingDesktop - 3}px`,
+    },
   },
 
   icon: {
