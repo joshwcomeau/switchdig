@@ -12,7 +12,11 @@ const Authors = () => (
   <MaxWidthWrapper className={css(styles.authors)} maxWidth={widthMediumPx}>
     <h1 className={css(styles.heading)}>Never miss a great book again...</h1>
     <p className={css(styles.paragraph)}>
-      I’m a voracious reader, and I have a lot of favorite authors.
+      I’m a voracious reader, and I have a&nbsp;
+      <a href="/">lot</a>&nbsp;
+      <a href="/">of</a>&nbsp;
+      <a href="/">favorite</a>&nbsp;
+      <a href="/">authors</a>.
     </p>
     <p className={css(styles.paragraph)}>
       Every month or two, I spend half an hour checking each author’s website to see if their newest books have been published. This is terribly ineffective; every site is different, some authors don’t have sites, others don’t update them.
