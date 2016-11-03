@@ -10,6 +10,10 @@ export default StyleSheet.create({
     [desktopMq]: {
       paddingTop: '50px',
       paddingBottom: '50px',
-    }
+    },
+  },
+
+  textField: {
+    transform: 'translateY(-14px)',
   },
 });

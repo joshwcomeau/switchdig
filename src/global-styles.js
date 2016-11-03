@@ -1,13 +1,13 @@
 import { StyleSheet } from './helpers/global-aphrodite';
 
-import { green } from './constants/colors';
+import { orange } from './constants/colors';
 import { desktopMq } from './constants/breakpoints';
 
 export default StyleSheet.create({
   globals: {
     '*a': {
       position: 'relative',
-      color: green,
+      color: orange,
       textDecoration: 'none',
       fontWeight: 'bold',
 
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         left: 0,
         right: 0,
         height: '2px',
-        background: green,
+        background: orange,
         opacity: 0,
         transform: 'translateY(2px)',
         transition: 'opacity 200ms, transform 200ms',

@@ -3,11 +3,9 @@
 import React, { Component, PropTypes } from 'react';
 import { css } from 'aphrodite';
 
-import { widthMediumPx } from '../../constants/sizes';
-
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Hr from '../Hr';
-import RowWithBullet from '../RowWithBullet';
+import AuthorSubscribeForm from '../AuthorSubscribeForm';
 import styles from './styles';
 
 
@@ -33,17 +31,7 @@ const Authors = () => (
     </MaxWidthWrapper>
 
     <MaxWidthWrapper>
-      <form>
-        <RowWithBullet bulletNum={1}>
-          Enter an author name
-        </RowWithBullet>
-        <RowWithBullet bulletNum={2}>
-          More Options
-        </RowWithBullet>
-        <RowWithBullet bulletNum={3}>
-          Final Options
-        </RowWithBullet>
-      </form>
+      <AuthorSubscribeForm />
     </MaxWidthWrapper>
   </div>
 );
@@ -52,8 +40,5 @@ Authors.propTypes = {
 
 };
 
-Authors.defaultProps = {
-
-};
 
 export default Authors;

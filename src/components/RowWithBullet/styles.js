@@ -14,7 +14,7 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     width: '50px',
     height: '50px',
-    marginRight: '15px',
+    marginRight: '22px',
     lineHeight: '50px',
     textAlign: 'center',
     borderRadius: '100%',

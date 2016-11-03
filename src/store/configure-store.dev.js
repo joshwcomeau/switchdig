@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducer from '../reducers';
+import apiMiddleware from '../middlewares/api.middleware';
 import DevTools from '../components/DevTools';
 
 
 export default function configureStore() {
-  const middlewares = [];
+  const middlewares = [apiMiddleware];
   const store = createStore(
     reducer,
     compose(
