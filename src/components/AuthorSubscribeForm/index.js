@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { css } from 'aphrodite';
 
-import { searchAuthorRequest } from '../../actions';
+import { IDLE } from '../../constants/statuses';
+import { searchAuthorRequest, searchAuthorInput } from '../../actions';
 
 import TextField from 'material-ui/TextField';
 import RowWithBullet from '../RowWithBullet';
@@ -16,14 +17,27 @@ class AuthorSubscribeForm extends Component {
   constructor(props) {
     super(props);
 
-    this.handleAuthorSearch = debounce(this.handleAuthorSearch.bind(this), 500);
+    this.submitSearchRequest = debounce(this.submitSearchRequest.bind(this), 500);
+    this.handleAuthorSearch = this.handleAuthorSearch.bind(this);
+  }
+
+  submitSearchRequest(author) {
+    this.props.searchAuthorRequest({ author });
   }
 
   handleAuthorSearch(ev, value) {
-    this.props.searchAuthorRequest({ author: value });
+    // Immediately dispatch an event that will let us react to the fact that
+    // results will be incoming.
+    this.props.searchAuthorInput();
+
+    // Also submit the value for processing. This is done as a separate action
+    // because it's debounced, to avoid sending a bunch of server requests.
+    this.submitSearchRequest(value);
   }
 
   render() {
+    const { searchAuthorStatus } = this.props;
+
     return (
       <form>
         <RowWithBullet bulletNum={1}>
@@ -34,7 +48,7 @@ class AuthorSubscribeForm extends Component {
           />
         </RowWithBullet>
 
-        <SampleBooks />
+        { searchAuthorStatus !== IDLE && <SampleBooks /> }
         <RowWithBullet bulletNum={2}>
           More Options
         </RowWithBullet>
@@ -47,7 +61,14 @@ class AuthorSubscribeForm extends Component {
 }
 
 AuthorSubscribeForm.propTypes = {
-
+  searchAuthorStatus: PropTypes.string,
 };
 
-export default connect(null, { searchAuthorRequest })(AuthorSubscribeForm);
+const mapStateToProps = state => ({
+  searchAuthorStatus: state.requests.searchAuthorStatus,
+});
+
+export default connect(
+  mapStateToProps,
+  { searchAuthorRequest, searchAuthorInput }
+)(AuthorSubscribeForm);
