@@ -16,7 +16,7 @@ class AuthorSubscribeForm extends Component {
   constructor(props) {
     super(props);
 
-    this.handleAuthorSearch = debounce(this.handleAuthorSearch.bind(this), 50);
+    this.handleAuthorSearch = debounce(this.handleAuthorSearch.bind(this), 500);
   }
 
   handleAuthorSearch(ev, value) {

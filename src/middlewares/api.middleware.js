@@ -1,5 +1,6 @@
 import {
-  SEARCH_AUTHOR_REQUEST
+  SEARCH_AUTHOR_REQUEST,
+  searchAuthorSuccess,
 } from '../actions';
 
 import { fetchFromAPI } from '../helpers/api.helpers';
@@ -17,12 +18,13 @@ const API = store => next => action => {
         resource: 'author/search',
         method: 'GET',
         data: { author: action.author }
-      }).then(response => {
-        console.log("API returned", response);
+      }).then(({ books }) => {
+        next(searchAuthorSuccess({ books }));
       }).catch(err => {
         console.error("API fucked up", err);
       });
     }
+
     default:
       // Do nothing for all other actions.
       return null;

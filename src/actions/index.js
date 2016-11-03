@@ -6,8 +6,7 @@ export const searchAuthorRequest = ({ author }) => ({
   author,
 });
 
-export const searchAuthorSuccess = ({ author, books }) => ({
+export const searchAuthorSuccess = ({ books }) => ({
   type: SEARCH_AUTHOR_SUCCESS,
-  author,
   books,
 });
