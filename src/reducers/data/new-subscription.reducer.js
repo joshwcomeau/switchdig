@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { createSelector } from 'reselect';
 
 import {
   SEARCH_AUTHOR_SUCCESS
@@ -19,3 +20,11 @@ const author = (state = initialState.author, action) => (
 export default combineReducers({
   author
 });
+
+const authorSelector = state => state.data.newSubscription.author;
+export const stepSelector = createSelector(
+  authorSelector,
+  (author) => {
+    return author ? 2 : 1;
+  }
+)

@@ -2,34 +2,45 @@
 import React, { Component, PropTypes } from 'react';
 import { css } from 'aphrodite';
 
-import { blue } from '../../constants/colors';
+import { blue, gray } from '../../constants/colors';
 import styles from './styles';
 
 
-const RowWithBullet = ({ bulletNum, bulletColor, children }) => (
+const RowWithBullet = ({
+  bulletNum,
+  bulletActiveColor,
+  bulletInactiveColor,
+  isActive,
+  children,
+}) => (
   <div className={css(styles.rowWithBullet)}>
     <div
       className={css(styles.bullet)}
       style={{
-        color: bulletColor,
-        borderColor: bulletColor,
+        color: isActive ? bulletActiveColor : bulletInactiveColor,
+        borderColor: isActive ? bulletActiveColor : bulletInactiveColor,
       }}
     >
       {bulletNum}
     </div>
-    {children}
+    <div className={css(styles.rowContent)}>
+      {children}
+    </div>
+    <div className={css(styles.connectingLine)} />
   </div>
 );
 
 
 RowWithBullet.propTypes = {
   bulletNum: PropTypes.number.isRequired,
-  bulletColor: PropTypes.string.isRequired,
+  bulletActiveColor: PropTypes.string.isRequired,
+  bulletInactiveColor: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
 
 RowWithBullet.defaultProps = {
-  bulletColor: blue,
+  bulletActiveColor: blue,
+  bulletInactiveColor: gray,
 };
 
 export default RowWithBullet;

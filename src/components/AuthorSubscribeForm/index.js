@@ -6,6 +6,9 @@ import { css } from 'aphrodite';
 
 import { IDLE } from '../../constants/statuses';
 import { searchAuthorRequest, searchAuthorInput } from '../../actions';
+import {
+  stepSelector,
+} from '../../reducers/data/new-subscription.reducer';
 
 import TextField from '../TextField';
 import RowWithBullet from '../RowWithBullet';
@@ -25,22 +28,22 @@ class AuthorSubscribeForm extends Component {
     this.props.searchAuthorRequest({ author });
   }
 
-  handleAuthorSearch(ev, value) {
+  handleAuthorSearch(ev) {
     // Immediately dispatch an event that will let us react to the fact that
     // results will be incoming.
     this.props.searchAuthorInput();
 
     // Also submit the value for processing. This is done as a separate action
     // because it's debounced, to avoid sending a bunch of server requests.
-    this.submitSearchRequest(value);
+    this.submitSearchRequest(ev.target.value);
   }
 
   render() {
-    const { searchAuthorStatus } = this.props;
+    const { searchAuthorStatus, step } = this.props;
 
     return (
       <form>
-        <RowWithBullet bulletNum={1}>
+        <RowWithBullet bulletNum={1} isActive={step === 1}>
           <TextField
             className={css(styles.textField)}
             label="Enter an author's name"
@@ -48,11 +51,11 @@ class AuthorSubscribeForm extends Component {
           />
         </RowWithBullet>
 
-        <RowWithBullet bulletNum={2}>
+        <RowWithBullet bulletNum={2} isActive={step === 2}>
           More Options
         </RowWithBullet>
 
-        <RowWithBullet bulletNum={3}>
+        <RowWithBullet bulletNum={3} isActive={step === 3}>
           Final Options
         </RowWithBullet>
 
@@ -69,6 +72,7 @@ AuthorSubscribeForm.propTypes = {
 
 const mapStateToProps = state => ({
   searchAuthorStatus: state.ui.requests.searchAuthorStatus,
+  step: stepSelector(state),
 });
 
 export default connect(

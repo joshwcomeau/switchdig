@@ -1,10 +1,14 @@
 import { StyleSheet } from './helpers/global-aphrodite';
 
-import { orange } from './constants/colors';
+import { orange, offwhite, black } from './constants/colors';
 import { desktopMq } from './constants/breakpoints';
 
 export default StyleSheet.create({
   globals: {
+    '*body': {
+      background: offwhite,
+      color: black,
+    },
     '*a': {
       position: 'relative',
       color: orange,
