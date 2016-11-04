@@ -48,13 +48,16 @@ class AuthorSubscribeForm extends Component {
           />
         </RowWithBullet>
 
-        { searchAuthorStatus !== IDLE && <SampleBooks /> }
         <RowWithBullet bulletNum={2}>
           More Options
         </RowWithBullet>
+
         <RowWithBullet bulletNum={3}>
           Final Options
         </RowWithBullet>
+
+        { searchAuthorStatus !== IDLE && <SampleBooks /> }
+
       </form>
     )
   }
@@ -65,7 +68,7 @@ AuthorSubscribeForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  searchAuthorStatus: state.requests.searchAuthorStatus,
+  searchAuthorStatus: state.ui.requests.searchAuthorStatus,
 });
 
 export default connect(

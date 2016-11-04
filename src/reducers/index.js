@@ -1,10 +1,7 @@
 import { combineReducers } from 'redux';
 
-import sampleBooks from './sample-books.reducer';
-import requests from './requests.reducer';
+import ui from './ui';
+import data from './data';
 
 
-export default combineReducers({
-  requests,
-  sampleBooks,
-});
+export default combineReducers({ ui, data });

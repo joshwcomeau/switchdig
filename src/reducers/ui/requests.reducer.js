@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { IDLE, LOADING, RESOLVED } from '../constants/statuses';
+import { IDLE, LOADING, RESOLVED } from '../../constants/statuses';
 import {
   SEARCH_AUTHOR_INPUT,
   SEARCH_AUTHOR_SUCCESS
-} from '../actions';
+} from '../../actions';
 
 
 // TODO: Generalize this reducer so new ones can be created easily.

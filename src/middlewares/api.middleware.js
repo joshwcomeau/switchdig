@@ -18,8 +18,8 @@ const API = store => next => action => {
         resource: 'author/search',
         method: 'GET',
         data: { author: action.author }
-      }).then(({ books }) => {
-        next(searchAuthorSuccess({ books }));
+      }).then(({ author, books }) => {
+        next(searchAuthorSuccess({ author, books }));
       }).catch(err => {
         console.error("API fucked up", err);
       });

@@ -1,7 +1,7 @@
 import {
   SEARCH_AUTHOR_REQUEST,
   SEARCH_AUTHOR_SUCCESS
-} from '../actions';
+} from '../../actions';
 
 export default function sampleBooks(state = [], action) {
   switch (action.type) {

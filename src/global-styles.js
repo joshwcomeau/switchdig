@@ -49,7 +49,7 @@ export default StyleSheet.create({
       marginBottom: '18px',
 
       [desktopMq]: {
-        fontSize: '17px',
+        fontSize: '16px',
       },
     },
   },
