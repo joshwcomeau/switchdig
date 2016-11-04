@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { css } from 'aphrodite';
+import { css } from 'aphrodite/no-important';
 
 import { IDLE, LOADING, RESOLVED } from '../../constants/statuses';
 

@@ -69,7 +69,7 @@ function buildJSTemplate(ComponentName, className) {
   return `\
 // eslint-disable-next-line no-unused-vars
 import React, { Component, PropTypes } from 'react';
-import { css } from 'aphrodite';
+import { css } from 'aphrodite/no-important';
 
 import styles from './styles';
 
@@ -95,7 +95,7 @@ export default ${ComponentName};\n`;
 
 function buildStylesTemplate(ComponentName, className) {
   return `\
-import { StyleSheet } from 'aphrodite';
+import { StyleSheet } from 'aphrodite/no-important';
 
 export default StyleSheet.create({
   ${className}: {

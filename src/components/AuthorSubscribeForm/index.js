@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import { css } from 'aphrodite';
+import { css } from 'aphrodite/no-important';
 
 import { IDLE } from '../../constants/statuses';
 import { searchAuthorRequest, searchAuthorInput } from '../../actions';

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite';
+import { StyleSheet } from 'aphrodite/no-important';
 import { orange, gray } from '../../constants/colors';
 
 const keyframes = {

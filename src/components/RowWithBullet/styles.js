@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite';
+import { StyleSheet } from 'aphrodite/no-important';
 import { gray } from '../../constants/colors';
 
 const BULLET_RADIUS = 25;

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // eslint-disable-next-line no-unused-vars
 import React, { Component, PropTypes } from 'react';
-import { css } from 'aphrodite';
+import { css } from 'aphrodite/no-important';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Hr from '../Hr';

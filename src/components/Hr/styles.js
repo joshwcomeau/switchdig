@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite';
+import { StyleSheet } from 'aphrodite/no-important';
 
 import { gray, lightGray } from '../../constants/colors';
 import { desktopMq } from '../../constants/breakpoints';

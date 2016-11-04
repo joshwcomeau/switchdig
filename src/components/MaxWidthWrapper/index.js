@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import { css } from 'aphrodite';
+import { css } from 'aphrodite/no-important';
 
 import { widthMediumPx } from '../../constants/sizes';
 import styles from './styles';
