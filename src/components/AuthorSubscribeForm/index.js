@@ -7,7 +7,7 @@ import { css } from 'aphrodite';
 import { IDLE } from '../../constants/statuses';
 import { searchAuthorRequest, searchAuthorInput } from '../../actions';
 
-import TextField from 'material-ui/TextField';
+import TextField from '../TextField';
 import RowWithBullet from '../RowWithBullet';
 import SampleBooks from '../SampleBooks';
 import styles from './styles';
@@ -43,7 +43,7 @@ class AuthorSubscribeForm extends Component {
         <RowWithBullet bulletNum={1}>
           <TextField
             className={css(styles.textField)}
-            floatingLabelText="Enter an author's name"
+            label="Enter an author's name"
             onChange={this.handleAuthorSearch}
           />
         </RowWithBullet>
