@@ -32,6 +32,7 @@ export default StyleSheet.create({
 
   rowContent: {
     paddingTop: '16px',
+    flex: 1,
   },
 
   connectingLine: {

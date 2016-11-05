@@ -5,11 +5,16 @@ import debounce from 'lodash/debounce';
 import { css } from 'aphrodite/no-important';
 
 import { IDLE } from '../../constants/statuses';
-import { searchAuthorRequest, searchAuthorInput } from '../../actions';
+import {
+  searchAuthorRequest,
+  searchAuthorInput,
+  updateMediaTypes,
+} from '../../actions';
 import {
   stepSelector,
 } from '../../reducers/data/new-subscription.reducer';
 
+import Checkbox from '../Checkbox';
 import TextField from '../TextField';
 import RowWithBullet from '../RowWithBullet';
 import SampleBooks from '../SampleBooks';
@@ -39,7 +44,12 @@ class AuthorSubscribeForm extends Component {
   }
 
   render() {
-    const { searchAuthorStatus, step } = this.props;
+    const {
+      searchAuthorStatus,
+      mediaTypes,
+      step,
+      updateMediaTypes,
+    } = this.props;
 
     return (
       <form>
@@ -53,7 +63,36 @@ class AuthorSubscribeForm extends Component {
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={2}>
-          More Options
+          Select the media types you care about
+          <div className={css(styles.checkboxes)}>
+            <Checkbox
+              className={styles.checkbox}
+              label="Print"
+              isChecked={mediaTypes.print}
+              onChange={ev => updateMediaTypes({
+                mediaType: 'print',
+                value: ev.target.checked,
+              })}
+            />
+            <Checkbox
+              className={styles.checkbox}
+              label="E-book"
+              isChecked={mediaTypes.ebook}
+              onChange={ev => updateMediaTypes({
+                mediaType: 'ebook',
+                value: ev.target.checked,
+              })}
+            />
+            <Checkbox
+              className={styles.checkbox}
+              label="Audiobook"
+              isChecked={mediaTypes.audiobook}
+              onChange={ev => updateMediaTypes({
+                mediaType: 'audiobook',
+                value: ev.target.checked,
+              })}
+            />
+          </div>
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={3}>
@@ -73,10 +112,11 @@ AuthorSubscribeForm.propTypes = {
 
 const mapStateToProps = state => ({
   searchAuthorStatus: state.ui.requests.searchAuthorStatus,
+  mediaTypes: state.data.newSubscription.mediaTypes,
   step: stepSelector(state),
 });
 
 export default connect(
   mapStateToProps,
-  { searchAuthorRequest, searchAuthorInput }
+  { searchAuthorRequest, searchAuthorInput, updateMediaTypes }
 )(AuthorSubscribeForm);

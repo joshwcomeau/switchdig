@@ -2,13 +2,19 @@ import { combineReducers } from 'redux';
 import { createSelector } from 'reselect';
 
 import {
-  SEARCH_AUTHOR_SUCCESS
+  SEARCH_AUTHOR_SUCCESS,
+  UPDATE_MEDIA_TYPES,
 } from '../../actions';
 
 
 const initialState = {
   author: null,
-}
+  mediaTypes: {
+    print: true,
+    ebook: false,
+    audiobook: false,
+  },
+};
 
 
 const author = (state = initialState.author, action) => (
@@ -17,10 +23,25 @@ const author = (state = initialState.author, action) => (
     : state
 );
 
+const mediaTypes = (state = initialState.mediaTypes, action) => {
+  switch (action.type) {
+    case UPDATE_MEDIA_TYPES:
+      return { ...state, [action.mediaType]: action.value };
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
-  author
+  author,
+  mediaTypes
 });
 
+
+// /////////////////
+// SELECTORS //////
+// ///////////////
 const authorSelector = state => state.data.newSubscription.author;
 export const stepSelector = createSelector(
   authorSelector,
