@@ -1,10 +1,18 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
+import { desktopMq } from '../../constants/breakpoints';
+
+
 export default StyleSheet.create({
   checkboxWrapper: {
     position: 'relative',
     lineHeight: '21px',
     margin: '4px 0',
+
+    [desktopMq]: {
+      display: 'inline-block',
+      marginRight: '45px',
+    },
   },
 
   nativeCheckbox: {

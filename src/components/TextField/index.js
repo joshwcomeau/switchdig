@@ -60,7 +60,8 @@ class TextField extends Component {
 
 TextField.propTypes = {
   id: PropTypes.string,
-  className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  className: PropTypes.object,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,

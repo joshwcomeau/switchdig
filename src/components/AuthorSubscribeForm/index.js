@@ -58,7 +58,7 @@ class AuthorSubscribeForm extends Component {
         <RowWithBullet currentStepNum={step} bulletNum={1}>
           <TextField
             id="author-name"
-            className={step === 1 && styles.activeField}
+            className={step === 1 ? styles.activeField : styles.inactiveField}
             label="Enter an author’s name"
             placeholder="Jim Butcher"
             onChange={this.handleAuthorSearch}
@@ -66,10 +66,11 @@ class AuthorSubscribeForm extends Component {
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={2}>
-          <span className={step === 1 && css(styles.activeField)}>
+          <span className={step === 2 && css(styles.activeField)}>
             Select the media types you care about
           </span>
           <CheckboxGroup
+            checkboxClassName={styles.checkboxes}
             checkboxes={[
               { id: 'print', label: 'Print' },
               { id: 'ebook', label: 'E-book' },

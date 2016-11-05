@@ -1,5 +1,8 @@
 import { StyleSheet } from 'aphrodite/no-important';
+
+import { desktopMq } from '../../constants/breakpoints';
 import { gray500, gray800, gray900 } from '../../constants/colors';
+
 
 const borderBottomHorizontalAnimation = {
   '0%': {
@@ -23,9 +26,14 @@ export default StyleSheet.create({
     padding: '12px 0',
     marginTop: '10px',
     outline: 'none',
-    minWidth: '280px',
+    minWidth: '190px',
     fontSize: '14px',
     color: gray800,
+
+    [desktopMq]: {
+      minWidth: '300px',
+    },
+
   },
   bottomBorder: {
     position: 'absolute',
