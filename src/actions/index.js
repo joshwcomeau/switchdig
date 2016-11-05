@@ -3,7 +3,7 @@ export const SEARCH_AUTHOR_INPUT = 'SEARCH_AUTHOR_INPUT';
 export const SEARCH_AUTHOR_REQUEST = 'SEARCH_AUTHOR_REQUEST';
 export const SEARCH_AUTHOR_SUCCESS = 'SEARCH_AUTHOR_SUCCESS';
 export const SEARCH_AUTHOR_FAILURE = 'SEARCH_AUTHOR_FAILURE';
-export const UPDATE_MEDIA_TYPES = 'UPDATE_MEDIA_TYPES';
+export const UPDATE_MEDIA_TYPE = 'UPDATE_MEDIA_TYPE';
 
 
 // Action Creators
@@ -27,8 +27,8 @@ export const searchAuthorFailure = ({ error }) => ({
   error,
 });
 
-export const updateMediaTypes = ({ mediaType, value }) => ({
-  type: UPDATE_MEDIA_TYPES,
-  mediaType,
+export const updateMediaType = ({ id, value }) => ({
+  type: UPDATE_MEDIA_TYPE,
+  id,
   value,
 });

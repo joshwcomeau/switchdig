@@ -8,13 +8,15 @@ import { IDLE } from '../../constants/statuses';
 import {
   searchAuthorRequest,
   searchAuthorInput,
-  updateMediaTypes,
+  updateMediaType,
 } from '../../actions';
 import {
+
+
   stepSelector,
 } from '../../reducers/data/new-subscription.reducer';
 
-import Checkbox from '../Checkbox';
+import CheckboxGroup from '../CheckboxGroup';
 import TextField from '../TextField';
 import RowWithBullet from '../RowWithBullet';
 import SampleBooks from '../SampleBooks';
@@ -48,51 +50,33 @@ class AuthorSubscribeForm extends Component {
       searchAuthorStatus,
       mediaTypes,
       step,
-      updateMediaTypes,
+      ...actions
     } = this.props;
 
     return (
       <form>
         <RowWithBullet currentStepNum={step} bulletNum={1}>
           <TextField
-            className={css(styles.textField)}
-            label="Enter an author's name"
+            className={step === 1 && styles.activeField}
+            label="Enter an author’s name"
             placeholder="Jim Butcher"
             onChange={this.handleAuthorSearch}
           />
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={2}>
-          Select the media types you care about
-          <div className={css(styles.checkboxes)}>
-            <Checkbox
-              className={styles.checkbox}
-              label="Print"
-              isChecked={mediaTypes.print}
-              onChange={ev => updateMediaTypes({
-                mediaType: 'print',
-                value: ev.target.checked,
-              })}
-            />
-            <Checkbox
-              className={styles.checkbox}
-              label="E-book"
-              isChecked={mediaTypes.ebook}
-              onChange={ev => updateMediaTypes({
-                mediaType: 'ebook',
-                value: ev.target.checked,
-              })}
-            />
-            <Checkbox
-              className={styles.checkbox}
-              label="Audiobook"
-              isChecked={mediaTypes.audiobook}
-              onChange={ev => updateMediaTypes({
-                mediaType: 'audiobook',
-                value: ev.target.checked,
-              })}
-            />
-          </div>
+          <span className={step === 1 && css(styles.activeField)}>
+            Select the media types you care about
+          </span>
+          <CheckboxGroup
+            checkboxes={[
+              { id: 'print', label: 'Print' },
+              { id: 'ebook', label: 'E-book' },
+              { id: 'audiobook', label: 'Audiobook' },
+            ]}
+            onChange={actions.updateMediaType}
+            checkedById={mediaTypes}
+          />
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={3}>
@@ -102,12 +86,21 @@ class AuthorSubscribeForm extends Component {
         { searchAuthorStatus !== IDLE && <SampleBooks /> }
 
       </form>
-    )
+    );
   }
 }
 
 AuthorSubscribeForm.propTypes = {
   searchAuthorStatus: PropTypes.string,
+  mediaTypes: PropTypes.shape({
+    print: PropTypes.bool.isRequired,
+    ebook: PropTypes.bool.isRequired,
+    audiobook: PropTypes.bool.isRequired,
+  }),
+  step: PropTypes.number.isRequired,
+  searchAuthorInput: PropTypes.func.isRequired,
+  searchAuthorRequest: PropTypes.func.isRequired,
+  updateMediaType: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -118,5 +111,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { searchAuthorRequest, searchAuthorInput, updateMediaTypes }
+  { searchAuthorInput, searchAuthorRequest, updateMediaType }
 )(AuthorSubscribeForm);

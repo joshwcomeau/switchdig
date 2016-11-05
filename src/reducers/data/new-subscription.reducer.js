@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 
 import {
   SEARCH_AUTHOR_SUCCESS,
-  UPDATE_MEDIA_TYPES,
+  UPDATE_MEDIA_TYPE,
 } from '../../actions';
 
 
@@ -25,8 +25,8 @@ const author = (state = initialState.author, action) => (
 
 const mediaTypes = (state = initialState.mediaTypes, action) => {
   switch (action.type) {
-    case UPDATE_MEDIA_TYPES:
-      return { ...state, [action.mediaType]: action.value };
+    case UPDATE_MEDIA_TYPE:
+      return { ...state, [action.id]: action.value };
 
     default:
       return state;
@@ -35,7 +35,7 @@ const mediaTypes = (state = initialState.mediaTypes, action) => {
 
 export default combineReducers({
   author,
-  mediaTypes
+  mediaTypes,
 });
 
 
@@ -45,7 +45,7 @@ export default combineReducers({
 const authorSelector = state => state.data.newSubscription.author;
 export const stepSelector = createSelector(
   authorSelector,
-  (author) => {
-    return author ? 2 : 1;
-  }
-)
+  author =>
+     author ? 2 : 1
+
+);
