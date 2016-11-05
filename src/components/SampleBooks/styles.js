@@ -8,6 +8,6 @@ export default StyleSheet.create({
   },
 
   author: {
-    color: indigo
-  }
+    color: indigo,
+  },
 });

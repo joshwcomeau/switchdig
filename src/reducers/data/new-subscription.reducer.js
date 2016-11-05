@@ -45,7 +45,6 @@ export default combineReducers({
 const authorSelector = state => state.data.newSubscription.author;
 export const stepSelector = createSelector(
   authorSelector,
-  author =>
-     author ? 2 : 1
-
+  // eslint-disable-next-line no-shadow
+  author => (author ? 2 : 1)
 );

@@ -8,7 +8,7 @@ const keyframes = {
 
   '100%': {
     transform: 'rotate(720deg)',
-  }
+  },
 };
 
 export default StyleSheet.create({

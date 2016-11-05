@@ -11,23 +11,33 @@ const RowWithBullet = ({
   currentStepNum,
   bulletActiveColor,
   bulletUpcomingColor,
-  drawConnectingLine,
+  shouldDrawConnectingLine,
   connectingLineActiveColor,
   connectingLineUpcomingColor,
   children,
 }) => {
   const isActive = bulletNum === currentStepNum;
   const isCompleted = bulletNum < currentStepNum;
+  const isUpcoming = !isActive && !isCompleted;
+
+  const connectingLine = shouldDrawConnectingLine && (
+    <div
+      className={css(styles.connectingLine)}
+      style={{
+        background: isActive
+          ? `linear-gradient(to bottom, ${connectingLineActiveColor} 0%, ${connectingLineUpcomingColor} 100%)`
+          : connectingLineUpcomingColor,
+      }}
+    />
+  );
 
   return (
     <div
       className={css(
         styles.rowWithBullet,
-        isCompleted
-          ? styles.completed
-          : isActive
-            ? styles.active
-            : styles.upcoming
+        isCompleted && styles.completed,
+        isActive && styles.active,
+        isUpcoming && styles.upcoming
       )}
     >
       <div
@@ -42,17 +52,9 @@ const RowWithBullet = ({
       <div className={css(styles.rowContent)}>
         {children}
       </div>
-      <div
-        className={css(styles.connectingLine)}
-        style={{
-          background: isActive
-            ? `linear-gradient(to bottom, ${connectingLineActiveColor} 0%, ${connectingLineUpcomingColor} 100%)`
-            : connectingLineUpcomingColor,
-        }}
-      />
+      {connectingLine}
     </div>
-
-  )
+  );
 };
 
 RowWithBullet.propTypes = {
@@ -60,7 +62,7 @@ RowWithBullet.propTypes = {
   currentStepNum: PropTypes.number.isRequired,
   bulletActiveColor: PropTypes.string.isRequired,
   bulletUpcomingColor: PropTypes.string.isRequired,
-  drawConnectingLine: PropTypes.bool.isRequired,
+  shouldDrawConnectingLine: PropTypes.bool.isRequired,
   connectingLineActiveColor: PropTypes.string.isRequired,
   connectingLineUpcomingColor: PropTypes.string.isRequired,
   children: PropTypes.node,
@@ -69,7 +71,7 @@ RowWithBullet.propTypes = {
 RowWithBullet.defaultProps = {
   bulletActiveColor: blue,
   bulletUpcomingColor: gray700,
-  drawConnectingLine: true,
+  shouldDrawConnectingLine: true,
   connectingLineActiveColor: blue,
   connectingLineUpcomingColor: gray500,
 };

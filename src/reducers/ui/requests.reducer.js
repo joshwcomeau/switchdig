@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { IDLE, LOADING, RESOLVED } from '../../constants/statuses';
 import {
   SEARCH_AUTHOR_INPUT,
-  SEARCH_AUTHOR_SUCCESS
+  SEARCH_AUTHOR_SUCCESS,
 } from '../../actions';
 
 
@@ -14,8 +14,8 @@ const searchAuthorStatus = (state = IDLE, action) => {
     case SEARCH_AUTHOR_SUCCESS: return RESOLVED;
     default: return state;
   }
-}
+};
 
 export default combineReducers({
-  searchAuthorStatus
+  searchAuthorStatus,
 });

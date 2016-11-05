@@ -44,6 +44,7 @@ const SampleBooks = ({ status, author, books }) => {
 
 SampleBooks.propTypes = {
   status: PropTypes.oneOf([IDLE, LOADING, RESOLVED]).isRequired,
+  author: PropTypes.string.isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

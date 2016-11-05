@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
-import { indigo, gray500, gray800, gray900 } from '../../constants/colors';
+import { gray500, gray800, gray900 } from '../../constants/colors';
 
 const borderBottomHorizontalAnimation = {
   '0%': {
@@ -8,7 +8,7 @@ const borderBottomHorizontalAnimation = {
 
   '100%': {
     transform: 'scaleX(1)',
-  }
+  },
 };
 
 
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     right: 0,
     bottom: '-11px',
     height: '2px',
-    backgroundColor: indigo,
+    backgroundColor: gray900,
     transform: 'scaleX(0)',
   },
   bottomBorderHighlightActive: {
@@ -52,5 +52,5 @@ export default StyleSheet.create({
     animationFillMode: 'forwards',
     animationTimingFunction: 'cubic-bezier(.24,.75,.5,1.08)',
     transformOrigin: 'left bottom',
-  }
+  },
 });

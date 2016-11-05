@@ -8,5 +8,5 @@ export default StyleSheet.create({
   },
   book: {
     height: '100%',
-  }
+  },
 });

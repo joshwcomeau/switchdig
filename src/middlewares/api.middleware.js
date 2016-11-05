@@ -5,8 +5,8 @@ import {
 
 import { fetchFromAPI } from '../helpers/api.helpers';
 
-
-const API = store => next => action => {
+// eslint-disable-next-line arrow-parens
+const API = () => next => action => {
   // Always dispatch the original action
   next(action);
 
@@ -17,17 +17,19 @@ const API = store => next => action => {
       fetchFromAPI({
         resource: 'author/search',
         method: 'GET',
-        data: { author: action.author }
+        data: { author: action.author },
       }).then(({ author, books }) => {
         next(searchAuthorSuccess({ author, books }));
-      }).catch(err => {
-        console.error("API fucked up", err);
+      }).catch((err) => {
+        console.error('API fucked up', err);
       });
+
+      break;
     }
 
     default:
       // Do nothing for all other actions.
-      return null;
+      return;
   }
 };
 

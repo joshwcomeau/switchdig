@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Match, Miss } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { blue } from './constants/colors';
 
 import configureStore from './store';
 

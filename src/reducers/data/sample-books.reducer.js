@@ -1,6 +1,6 @@
 import {
   SEARCH_AUTHOR_REQUEST,
-  SEARCH_AUTHOR_SUCCESS
+  SEARCH_AUTHOR_SUCCESS,
 } from '../../actions';
 
 export default function sampleBooks(state = [], action) {

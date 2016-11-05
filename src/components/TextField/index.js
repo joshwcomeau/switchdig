@@ -23,27 +23,22 @@ class TextField extends Component {
   }
 
   handleFocus() {
-    this.setState({ focused: true })
+    this.setState({ focused: true });
   }
 
   handleBlur() {
-    this.setState({ focused: false })
+    this.setState({ focused: false });
   }
 
   render() {
-    const { label, placeholder, onChange, className } = this.props;
+    const { id, label, placeholder, onChange, className } = this.props;
 
     return (
-      <label
-        className={css(
-          styles.textField,
-          className,
-          this.state.focused && styles.textFieldActive
-        )}
-      >
+      <label htmlFor={id} className={css(styles.textField, className)}>
         {label}
         <br />
         <input
+          id={id}
           type="text"
           placeholder={placeholder}
           className={css(styles.input)}
@@ -64,14 +59,11 @@ class TextField extends Component {
 }
 
 TextField.propTypes = {
+  id: PropTypes.string,
   className: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
-};
-
-TextField.defaultProps = {
-
 };
 
 export default TextField;

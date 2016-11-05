@@ -14,4 +14,12 @@ const Spinner = ({ containerHeight }) => (
   </div>
 );
 
+Spinner.propTypes = {
+  containerHeight: PropTypes.number.isRequired,
+};
+
+Spinner.defaultProps = {
+  containerHeight: 80,
+};
+
 export default Spinner;

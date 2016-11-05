@@ -57,6 +57,7 @@ class AuthorSubscribeForm extends Component {
       <form>
         <RowWithBullet currentStepNum={step} bulletNum={1}>
           <TextField
+            id="author-name"
             className={step === 1 && styles.activeField}
             label="Enter an author’s name"
             placeholder="Jim Butcher"

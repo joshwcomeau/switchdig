@@ -13,7 +13,7 @@ export default StyleSheet.create({
 
     [desktopMq]: {
       margin: '50px 15%',
-    }
+    },
   },
 
   line: {
