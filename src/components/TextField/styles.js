@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
-import { indigo, gray, darkGray, black } from '../../constants/colors';
+import { indigo, gray500, gray800, gray900 } from '../../constants/colors';
 
 const borderBottomHorizontalAnimation = {
   '0%': {
@@ -15,7 +15,7 @@ const borderBottomHorizontalAnimation = {
 export default StyleSheet.create({
   textField: {
     position: 'relative',
-    color: black,
+    color: gray900,
   },
   input: {
     background: 'transparent',
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     outline: 'none',
     minWidth: '280px',
     fontSize: '14px',
-    color: darkGray,
+    color: gray800,
   },
   bottomBorder: {
     position: 'absolute',
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     right: 0,
     bottom: '-10px',
     height: '1px',
-    backgroundColor: gray,
+    backgroundColor: gray500,
   },
   bottomBorderHighlight: {
     position: 'absolute',

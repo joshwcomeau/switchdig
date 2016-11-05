@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { gray, lightGray } from '../../constants/colors';
+import { gray500, gray300 } from '../../constants/colors';
 import { desktopMq } from '../../constants/breakpoints';
 
 const height = '24px';
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     margin: 'auto',
     width: `calc(50% - ${height})`,
     height: '1px',
-    background: lightGray,
+    background: gray300,
   },
 
   lineLeft: {
@@ -46,7 +46,7 @@ export default StyleSheet.create({
   },
 
   icon: {
-    fill: gray,
+    fill: gray500,
     transformOrigin: 'center center',
     transform: 'rotate(90deg)',
   },

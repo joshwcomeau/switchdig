@@ -43,19 +43,20 @@ class AuthorSubscribeForm extends Component {
 
     return (
       <form>
-        <RowWithBullet bulletNum={1} isActive={step === 1}>
+        <RowWithBullet currentStepNum={step} bulletNum={1}>
           <TextField
             className={css(styles.textField)}
             label="Enter an author's name"
+            placeholder="Jim Butcher"
             onChange={this.handleAuthorSearch}
           />
         </RowWithBullet>
 
-        <RowWithBullet bulletNum={2} isActive={step === 2}>
+        <RowWithBullet currentStepNum={step} bulletNum={2}>
           More Options
         </RowWithBullet>
 
-        <RowWithBullet bulletNum={3} isActive={step === 3}>
+        <RowWithBullet currentStepNum={step} bulletNum={3}>
           Final Options
         </RowWithBullet>
 

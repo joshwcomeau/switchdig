@@ -6,6 +6,6 @@ import * as colors from '../constants/colors';
 export const getPrimaryColorForMediaType = (mediaType) => {
   switch (mediaType) {
     case 'authors': return colors.blue;
-    default: return colors.darkGray;
+    default: return colors.gray700;
   }
 };

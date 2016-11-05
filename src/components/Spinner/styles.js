@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
-import { orange, gray } from '../../constants/colors';
+import { orange, gray500 } from '../../constants/colors';
 
 const keyframes = {
   '0%': {
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     borderRadius: '50%',
     border: '5px solid #EEEEEE',
     borderTopColor: orange,
-    borderBottomColor: gray,
+    borderBottomColor: gray500,
     animationName: keyframes,
     animationDuration: '2.5s',
     animationIterationCount: 'infinite',

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
-import { gray } from '../../constants/colors';
+import { gray300 } from '../../constants/colors';
 
 const BULLET_RADIUS = 25;
 
@@ -8,6 +8,12 @@ export default StyleSheet.create({
     position: 'relative',
     display: 'flex',
     paddingBottom: '25px',
+    opacity: 1,
+    transition: 'opacity 500ms',
+  },
+
+  upcoming: {
+    opacity: 0.5,
   },
 
   bullet: {
@@ -25,7 +31,7 @@ export default StyleSheet.create({
   },
 
   rowContent: {
-    paddingTop: '15px',
+    paddingTop: '16px',
   },
 
   connectingLine: {
@@ -34,6 +40,5 @@ export default StyleSheet.create({
     left: BULLET_RADIUS,
     bottom: 0,
     width: '1px',
-    backgroundColor: gray,
   },
 });

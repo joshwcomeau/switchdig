@@ -35,7 +35,7 @@ export default StyleSheet.create({
 
   icon: {
     transform: 'translateY(4px)', // vertical alignment D:
-    fill: colors.gray,
+    fill: colors.gray500,
   },
 
   name: {
