@@ -4,8 +4,8 @@ import React, { Component, PropTypes } from 'react';
 import Toggle from '../Toggle';
 
 
-const Checkbox = props => (
-  <Toggle type="checkbox" {...props} />
+const RadioButton = props => (
+  <Toggle type="radio" {...props} />
 );
 
-export default Checkbox;
+export default RadioButton;

@@ -4,7 +4,7 @@ import { desktopMq } from '../../constants/breakpoints';
 
 
 export default StyleSheet.create({
-  checkboxWrapper: {
+  toggleWrapper: {
     position: 'relative',
     lineHeight: '21px',
     margin: '4px 0',
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     },
   },
 
-  nativeCheckbox: {
+  nativeInput: {
     position: 'absolute',
     zIndex: 2,
     top: 0,
@@ -30,5 +30,6 @@ export default StyleSheet.create({
   label: {
     marginLeft: '6px',
     verticalAlign: 'top',
+    fontSize: '14px',
   },
 });
