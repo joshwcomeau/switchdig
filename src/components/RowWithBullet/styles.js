@@ -6,7 +6,7 @@ export default StyleSheet.create({
   rowWithBullet: {
     position: 'relative',
     display: 'flex',
-    paddingBottom: '25px',
+    paddingBottom: '40px',
     opacity: 1,
     transition: 'opacity 500ms',
   },

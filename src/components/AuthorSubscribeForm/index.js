@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { css } from 'aphrodite/no-important';
 
-import { IDLE } from '../../constants/statuses';
+import { buildErrorMessage } from '../../helpers/errors';
+import { RESOLVED, LOADING } from '../../constants/statuses';
 import {
   searchAuthorRequest,
   searchAuthorInput,
@@ -17,9 +18,11 @@ import {
 } from '../../reducers/data/new-subscription.reducer';
 
 import CheckboxGroup from '../CheckboxGroup';
+import RadioButtonGroup from '../RadioButtonGroup';
 import TextField from '../TextField';
 import RowWithBullet from '../RowWithBullet';
 import SampleBooks from '../SampleBooks';
+import Spinner from '../Spinner';
 import styles from './styles';
 
 
@@ -48,10 +51,14 @@ class AuthorSubscribeForm extends Component {
   render() {
     const {
       searchAuthorStatus,
+      searchAuthorErrorCode,
       mediaTypes,
       step,
       ...actions
     } = this.props;
+
+    const showSampleBooks = searchAuthorStatus === RESOLVED;
+    const showSpinner = searchAuthorStatus === LOADING;
 
     return (
       <form>
@@ -62,15 +69,24 @@ class AuthorSubscribeForm extends Component {
             label="Enter an author’s name"
             placeholder="Jim Butcher"
             onChange={this.handleAuthorSearch}
+            status={searchAuthorStatus}
+            errorMessage={
+              buildErrorMessage(searchAuthorErrorCode, { type: 'authors' })
+            }
           />
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={2}>
-          <span className={step === 2 && css(styles.activeField)}>
+          <span
+            className={css(
+              step === 2
+                ? styles.activeField
+                : styles.inactiveField
+            )}
+          >
             Select the media types you care about
           </span>
           <CheckboxGroup
-            checkboxClassName={styles.checkboxes}
             checkboxes={[
               { id: 'print', label: 'Print' },
               { id: 'ebook', label: 'E-book' },
@@ -82,10 +98,36 @@ class AuthorSubscribeForm extends Component {
         </RowWithBullet>
 
         <RowWithBullet currentStepNum={step} bulletNum={3}>
-          Final Options
+          <span
+            className={css(
+              step === 3
+                ? styles.activeField
+                : styles.inactiveField
+            )}
+          >
+            Enter contact info
+          </span>
+          <RadioButtonGroup
+            name="contact-method"
+            radioButtons={[
+              { id: 'email', label: 'Email' },
+              { id: 'sms', label: 'SMS (coming soon)', disabled: true },
+            ]}
+            onChange={data => console.log(data)}
+            checkedId="email"
+          />
+
+          <TextField
+            id="email"
+            className={step === 3 ? styles.activeField : styles.inactiveField}
+            placeholder="w.shakespeare@gmai"
+            onChange={this.handleAuthorSearch}
+          />
+
         </RowWithBullet>
 
-        { searchAuthorStatus !== IDLE && <SampleBooks /> }
+        { showSampleBooks && <SampleBooks /> }
+        { showSpinner && <Spinner /> }
 
       </form>
     );
@@ -94,6 +136,7 @@ class AuthorSubscribeForm extends Component {
 
 AuthorSubscribeForm.propTypes = {
   searchAuthorStatus: PropTypes.string,
+  searchAuthorErrorCode: PropTypes.string,
   mediaTypes: PropTypes.shape({
     print: PropTypes.bool.isRequired,
     ebook: PropTypes.bool.isRequired,
@@ -107,6 +150,7 @@ AuthorSubscribeForm.propTypes = {
 
 const mapStateToProps = state => ({
   searchAuthorStatus: state.ui.requests.searchAuthorStatus,
+  searchAuthorErrorCode: state.ui.errors.searchAuthor.code,
   mediaTypes: state.data.newSubscription.mediaTypes,
   step: stepSelector(state),
 });
