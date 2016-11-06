@@ -1,7 +1,7 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
 import { desktopMq } from '../../constants/breakpoints';
-import { gray500, gray800, gray900 } from '../../constants/colors';
+import { red, gray500, gray800, gray900 } from '../../constants/colors';
 
 
 const borderBottomHorizontalAnimation = {
@@ -14,11 +14,25 @@ const borderBottomHorizontalAnimation = {
   },
 };
 
+const MOBILE_INPUT_WIDTH = 190;
+const DESKTOP_INPUT_WIDTH = 300;
+
 
 export default StyleSheet.create({
   textField: {
     position: 'relative',
     color: gray900,
+  },
+  textFieldError: {
+    color: red,
+  },
+  textFieldInputWrapper: {
+    position: 'relative',
+    width: MOBILE_INPUT_WIDTH,
+
+    [desktopMq]: {
+      width: DESKTOP_INPUT_WIDTH,
+    },
   },
   input: {
     background: 'transparent',
@@ -26,12 +40,12 @@ export default StyleSheet.create({
     padding: '12px 0',
     marginTop: '10px',
     outline: 'none',
-    minWidth: '190px',
     fontSize: '14px',
     color: gray800,
+    width: MOBILE_INPUT_WIDTH,
 
     [desktopMq]: {
-      minWidth: '300px',
+      width: DESKTOP_INPUT_WIDTH,
     },
 
   },
@@ -40,7 +54,7 @@ export default StyleSheet.create({
     zIndex: 1,
     left: 0,
     right: 0,
-    bottom: '-10px',
+    bottom: 0,
     height: '1px',
     backgroundColor: gray500,
   },
@@ -49,7 +63,7 @@ export default StyleSheet.create({
     zIndex: 2,
     left: 0,
     right: 0,
-    bottom: '-11px',
+    bottom: 0,
     height: '2px',
     backgroundColor: gray900,
     transform: 'scaleX(0)',
@@ -60,5 +74,15 @@ export default StyleSheet.create({
     animationFillMode: 'forwards',
     animationTimingFunction: 'cubic-bezier(.24,.75,.5,1.08)',
     transformOrigin: 'left bottom',
+  },
+  bottomBorderHighlightError: {
+    backgroundColor: red,
+  },
+
+  errorMessage: {
+    color: red,
+    paddingTop: '12px',
+    fontSize: '12px',
+    fontWeight: 100,
   },
 });

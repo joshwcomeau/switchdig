@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import { css } from 'aphrodite/no-important';
 
+import * as STATUSES from '../../constants/statuses';
 import styles from './styles';
 
 
@@ -31,28 +32,47 @@ class TextField extends Component {
   }
 
   render() {
-    const { id, label, placeholder, onChange, className } = this.props;
+    const {
+      id,
+      status,
+      label,
+      placeholder,
+      onChange,
+      className,
+      errorMessage,
+    } = this.props;
+
+    const hasError = status === STATUSES.FAILED;
+
+    const error = hasError && errorMessage && (
+      <div className={css(styles.errorMessage)}>{errorMessage}</div>
+    );
 
     return (
       <label htmlFor={id} className={css(styles.textField, className)}>
         {label}
         <br />
-        <input
-          id={id}
-          type="text"
-          placeholder={placeholder}
-          className={css(styles.input)}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onChange={onChange}
-        />
-        <div className={css(styles.bottomBorder)} />
-        <div
-          className={css(
-            styles.bottomBorderHighlight,
-            this.state.focused && styles.bottomBorderHighlightActive
-          )}
-        />
+        <div className={css(styles.textFieldInputWrapper)}>
+          <input
+            id={id}
+            type="text"
+            placeholder={placeholder}
+            className={css(styles.input)}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onChange={onChange}
+          />
+          <div className={css(styles.bottomBorder)} />
+          <div
+            className={css(
+              styles.bottomBorderHighlight,
+              this.state.focused && styles.bottomBorderHighlightActive,
+              hasError && styles.bottomBorderHighlightError
+            )}
+          />
+        </div>
+
+        {error}
       </label>
     );
   }
@@ -60,11 +80,13 @@ class TextField extends Component {
 
 TextField.propTypes = {
   id: PropTypes.string,
+  status: PropTypes.oneOf(STATUSES),
   // eslint-disable-next-line react/forbid-prop-types
   className: PropTypes.object,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
 };
 
 export default TextField;
