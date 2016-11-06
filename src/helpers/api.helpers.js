@@ -26,5 +26,14 @@ export const fetchFromAPI = ({ resource, method, data }) => {
 
   const request = new Request(url, requestParams);
 
-  return fetch(request).then(response => response.json());
+  return fetch(request).then((response) => {
+    if (!response.ok) {
+      console.log('FAIL.', response);
+      return new Promise((resolve, reject) => {
+        response.json().then(reject);
+      });
+    }
+
+    return response.json();
+  });
 };
